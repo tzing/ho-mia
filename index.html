@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>號名 | 姓名筆畫五行解析</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div id="app">
+        <main id="main-content">
+            <header class="hero-section" id="hero" role="banner">
+                <h1 id="hero-heading" class="visually-hidden">號名 | 姓名筆畫五行解析</h1>
+                <div class="hero-inner">
+                    <div class="name-input-wrapper">
+                        <div class="name-input-container" id="name-input-container">
+                            <div class="annotation-stack annotation-stack--top" id="annotation-stack-top"></div>
+                            <input 
+                                type="text" 
+                                id="name-input" 
+                                class="name-input" 
+                                placeholder="" 
+                                maxlength="4"
+                                autocomplete="off"
+                                spellcheck="false"
+                            >
+                            <div class="name-display" id="name-display">
+                                <span class="char-slot" data-index="0"></span>
+                                <span class="char-slot" data-index="1"></span>
+                                <span class="char-slot" data-index="2"></span>
+                            </div>
+                            <div class="annotation-stack annotation-stack--bottom" id="annotation-stack-bottom"></div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <section class="content-section" aria-labelledby="analysis-heading">
+                <div class="content-wrapper">
+                    <section class="content-block" aria-labelledby="analysis-heading">
+                        <h2 id="analysis-heading" class="visually-hidden">解析</h2>
+                        <div class="content-grid" role="list">
+                            <article class="content-entry" role="listitem" aria-labelledby="three-talents-heading">
+                                <div class="content-entry__label">
+                                    <h3 id="three-talents-heading">三才姓名學</h3>
+                                </div>
+                                <div class="content-entry__content" aria-live="polite">
+                                    <div class="three-talents" id="three-talents-content">
+                                        <div class="three-talents__badges" role="list" aria-label="三才五行"></div>
+                                        <p class="three-talents__placeholder">等待輸入資料</p>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="content-entry" role="listitem" aria-labelledby="five-grids-heading">
+                                <div class="content-entry__label">
+                                    <h3 id="five-grids-heading">五格姓名學</h3>
+                                </div>
+                                <div class="content-entry__content" id="five-grids-content" aria-live="polite">
+                                    <div class="analysis-badges">
+                                        <div class="analysis-badges__item" data-grid-key="heaven">
+                                            <span class="analysis-badges__label">天格</span>
+                                            <span class="analysis-badges__badge annotation-line__badge annotation-line__badge--empty" data-grid-badge="heaven"></span>
+                                            <span class="analysis-badges__placeholder">等待輸入資料</span>
+                                        </div>
+                                        <div class="analysis-badges__item" data-grid-key="personality">
+                                            <span class="analysis-badges__label">人格</span>
+                                            <span class="analysis-badges__badge annotation-line__badge annotation-line__badge--empty" data-grid-badge="personality"></span>
+                                            <span class="analysis-badges__placeholder">等待輸入資料</span>
+                                        </div>
+                                        <div class="analysis-badges__item" data-grid-key="earth">
+                                            <span class="analysis-badges__label">地格</span>
+                                            <span class="analysis-badges__badge annotation-line__badge annotation-line__badge--empty" data-grid-badge="earth"></span>
+                                            <span class="analysis-badges__placeholder">等待輸入資料</span>
+                                        </div>
+                                        <div class="analysis-badges__item" data-grid-key="outer">
+                                            <span class="analysis-badges__label">外格</span>
+                                            <span class="analysis-badges__badge annotation-line__badge annotation-line__badge--empty" data-grid-badge="outer"></span>
+                                            <span class="analysis-badges__placeholder">等待輸入資料</span>
+                                        </div>
+                                        <div class="analysis-badges__item" data-grid-key="total">
+                                            <span class="analysis-badges__label">總格</span>
+                                            <span class="analysis-badges__badge annotation-line__badge annotation-line__badge--empty" data-grid-badge="total"></span>
+                                            <span class="analysis-badges__placeholder">等待輸入資料</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <hr class="content-divider" aria-hidden="true">
+
+                    <section class="content-block" aria-labelledby="usage-guide-heading">
+                        <h2 id="usage-guide-heading">這是什麼？</h2>
+                        <p>
+                            這是一個姓名筆畫解析工具，根據你輸入的姓名，依照《周易》文字筆劃與五行理論，分析姓名中的五行屬性。
+                            同時結合三才五格原理，運用八十一數理吉凶表，為你解析姓名的吉凶與整體運勢。
+                        </p>
+                        <p>
+                            只要在上方輸入您的全名，工具就會自動幫您解析姓名中的五行屬性，並計算三才五格與吉凶分析，結果會立即顯示在對應欄位。
+                        </p>
+                    </section>
+                </div>
+            </section>
+        </main>
+        <footer class="page-footer" aria-label="footer">
+            <p class="page-footer__note">
+                Fork the pasta, remix the vibes →
+                <a href="https://github.com/tzing/ho-mia">GitHub</a>.
+            </p>
+        </footer>
+    </div>
+    <script type="module" src="/scripts/main.js"></script>
+</body>
+</html>
