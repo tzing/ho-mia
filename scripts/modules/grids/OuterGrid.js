@@ -32,25 +32,35 @@ export class OuterGrid extends Grid {
             return resultsMap[key] ?? null;
         };
 
-        if (effectiveLength <= 1) {
-            return null;
-        }
-
-        if (surnameEntries.length === 0 || givenNameEntries.length === 0) {
+        if (
+            effectiveLength <= 1 ||
+            surnameEntries.length === 0 ||
+            givenNameEntries.length === 0
+        ) {
             return null;
         }
 
         const surnameLength = surnameEntries.length;
         const givenNameCount = givenNameEntries.length;
+        const isSingleSurname = surnameLength === 1;
+        const isDoubleSurname = surnameLength === 2;
+        const hasSingleGiven = givenNameCount === 1;
+        const hasMultipleGiven = givenNameCount >= 2;
+        const buildResult = (strokeCount) => {
+            const classification = strokeCount > 0
+                ? FiveGrid.derivePolarityAndElement(strokeCount)
+                : null;
 
-        if (surnameLength === 1 && givenNameCount === 1) {
-            const classification = FiveGrid.derivePolarityAndElement(2);
             return {
-                strokeCount: 2,
+                strokeCount,
                 element: classification?.element ?? null,
                 polarity: classification?.polarity ?? null,
                 entriesUsed: []
             };
+        };
+
+        if (isSingleSurname && hasSingleGiven) {
+            return buildResult(2);
         }
 
         const totalResult = getResult('total');
@@ -61,24 +71,15 @@ export class OuterGrid extends Grid {
         }
 
         const base = totalResult.strokeCount - personalityResult.strokeCount;
-        let strokeTotal = base;
 
-        if (surnameLength === 1 && givenNameCount >= 2) {
-            strokeTotal = base + 1;
-        } else if (surnameLength === 2 && givenNameCount === 1) {
-            strokeTotal = base + 1;
+        if (isDoubleSurname && hasMultipleGiven) {
+            return buildResult(base);
         }
 
-        const classification = strokeTotal > 0
-            ? FiveGrid.derivePolarityAndElement(strokeTotal)
-            : null;
+        const needsAdjustment = (isSingleSurname && hasMultipleGiven) || (isDoubleSurname && hasSingleGiven);
+        const strokeTotal = needsAdjustment ? base + 1 : base;
 
-        return {
-            strokeCount: strokeTotal,
-            element: classification?.element ?? null,
-            polarity: classification?.polarity ?? null,
-            entriesUsed: []
-        };
+        return buildResult(strokeTotal);
     }
 
     resolveIndices(entries, context = {}) {
