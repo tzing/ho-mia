@@ -5,7 +5,6 @@ on:
     branches:
       - main
   workflow_dispatch:
-  pull_request: #TODO remove
 
 permissions:
   contents: read
@@ -14,6 +13,9 @@ permissions:
 
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -25,3 +27,12 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
