@@ -4,17 +4,30 @@
     box-sizing: border-box;
 }
 
+:root {
+    /* Primary color with predefined alpha steps */
+    --color-primary: rgb(102, 126, 234);
+    --color-primary-a-12: rgba(102, 126, 234, 0.12);
+    --color-primary-a-20: rgba(102, 126, 234, 0.20);
+    --color-primary-a-28: rgba(102, 126, 234, 0.28);
+    --color-primary-a-30: rgba(102, 126, 234, 0.30);
+    --color-primary-a-35: rgba(102, 126, 234, 0.35);
+    --color-primary-a-50: rgba(102, 126, 234, 0.50);
+    --color-primary-a-60: rgba(102, 126, 234, 0.60);
+    /* Accent color */
+    --color-accent: #f9a8d4;
+    /* Fortune colors - teal & charcoal */
+    --color-fortune-auspicious-bg: rgba(20, 184, 166, 0.18); /* #14B8A6 @ 0.18 */
+    --color-fortune-auspicious-fg: #0F766E;
+    --color-fortune-inauspicious-bg: rgba(31, 41, 55, 0.18); /* #1F2937 @ 0.18 */
+    --color-fortune-inauspicious-fg: #111827;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft JhengHei', 'PingFang TC', 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 0;
     color: #333;
-}
-
-html {
-    --annotation-stack-offset: clamp(6px, 0.9vw, 12px);
-    --annotation-row-height: clamp(28px, 2.6vw, 36px);
-    --annotation-row-gap: clamp(3px, 0.4vw, 6px);
 }
 
 .toast {
@@ -63,7 +76,7 @@ html {
 
 /* Hero section with gradient background */
 .hero-section {
-    background: linear-gradient(135deg, #667eea 0%, #f9a8d4 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
     min-height: clamp(420px, 70vh, 640px);
     display: flex;
     align-items: center;
@@ -153,7 +166,7 @@ html {
     height: 3px;
     width: min(480px, 80%);
     margin: clamp(12px, 4vw, 24px) auto;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.6) 0%, rgba(249, 168, 212, 0.6) 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
     border-radius: 999px;
 }
 
@@ -173,10 +186,10 @@ html {
     flex-wrap: wrap;
     align-items: center;
     padding: 14px 16px;
-    border: 1px solid rgba(102, 126, 234, 0.35);
+    border: 1px solid var(--color-primary-a-35);
     border-radius: 16px;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(255, 255, 255, 0.96) 100%);
-    box-shadow: 0 10px 24px rgba(102, 126, 234, 0.12);
+    background: linear-gradient(135deg, var(--color-primary-a-30) 0%, rgba(255, 255, 255, 0.96) 100%);
+    box-shadow: 0 10px 24px var(--color-primary-a-12);
     gap: clamp(12px, 2vw, 18px);
     row-gap: clamp(8px, 1.6vw, 14px);
 }
@@ -240,7 +253,7 @@ html {
     gap: 10px;
     padding: 14px 16px;
     border-radius: 16px;
-    border: 1px solid rgba(102, 126, 234, 0.28);
+    border: 1px solid var(--color-primary-a-28);
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(226, 232, 255, 0.88) 100%);
 }
 
@@ -271,7 +284,7 @@ html {
 }
 
 .element-badge:focus-visible {
-    outline: 2px solid rgba(102, 126, 234, 0.5);
+    outline: 2px solid var(--color-primary-a-50);
     outline-offset: 2px;
 }
 
@@ -281,16 +294,16 @@ html {
     justify-content: center;
     padding: 3px 10px;
     border-radius: 999px;
-    background: rgba(79, 70, 229, 0.18);
+    background: var(--color-fortune-auspicious-bg);
     font-size: 13px;
     font-weight: 600;
-    color: #4338ca;
+    color: var(--color-fortune-auspicious-fg);
     white-space: nowrap;
 }
 
 .analysis-badges__fortune-luck--inauspicious {
-    background: rgba(220, 38, 38, 0.18);
-    color: #b91c1c;
+    background: var(--color-fortune-inauspicious-bg);
+    color: var(--color-fortune-inauspicious-fg);
 }
 
 .content-entry {
@@ -389,6 +402,9 @@ html {
 }
 
 .annotation-stack {
+    --annotation-stack-offset: clamp(6px, 0.9vw, 12px);
+    --annotation-row-height: clamp(28px, 2.6vw, 36px);
+    --annotation-row-gap: clamp(3px, 0.4vw, 6px);
     width: 100%;
     pointer-events: none;
     color: rgba(255, 255, 255, 0.86);
@@ -534,7 +550,7 @@ html {
 
 .char-slot--placeholder {
     border-style: solid;
-    border-color: #667eea;
+    border-color: var(--color-primary);
     background: rgba(255, 255, 255, 0.95);
     color: transparent;
     overflow: hidden;
@@ -545,7 +561,7 @@ html {
     position: absolute;
     width: 60px;
     height: 4px;
-    background: rgba(102, 126, 234, 0.6);
+    background: var(--color-primary-a-60);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
@@ -557,7 +573,7 @@ html {
     position: absolute;
     width: 60px;
     height: 4px;
-    background: rgba(102, 126, 234, 0.6);
+    background: var(--color-primary-a-60);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(-45deg);
@@ -571,9 +587,9 @@ html {
     right: var(--stroke-right, 6px);
     font-size: 11px;
     font-weight: 600;
-    color: #667eea;
+    color: var(--color-primary);
     background: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(102, 126, 234, 0.2);
+    border: 1px solid var(--color-primary-a-20);
     border-radius: 3px;
     padding: 0 6px;
     line-height: 21px;
@@ -657,13 +673,13 @@ html {
 
 .char-slot.empty::after {
     content: '○';
-    color: rgba(102, 126, 234, 0.3);
+    color: var(--color-primary-a-30);
     font-size: 60px;
 }
 
 .char-slot:not(.empty) {
-    border-color: #667eea;
-    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 20px var(--color-primary-a-30);
 }
 
 .char-slot.empty.focused {
